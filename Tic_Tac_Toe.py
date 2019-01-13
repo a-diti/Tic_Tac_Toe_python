@@ -51,9 +51,21 @@ def check_board_full(board):
 
 def player_choice(board):
         position = ' '
-        while position not in '1 2 3 4 5 6 7 8 9'.split() or not space_check(board,int(position)):
-                position = input('Enter your next position from 1-9: ')
-        return int(position)
+        while True:
+                try:
+                        position = int(input('Enter your next position from 1-9: '))
+                except ValueError:
+                        print("Sorry, please input a number between 1-9.")
+                        continue
+                if position not in range(1,10):
+                        print("Sorry, please input a number between 1-9.")
+                        continue
+                if not space_check(board,int(position)):
+                        print("That space isn't empty!")
+                        continue
+                else:
+                        break
+        return position
          
 def again_play():
         return input('Do you want to play again (Y/N):').upper().startswith('Y')
