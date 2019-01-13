@@ -97,6 +97,7 @@ while True:
                         else:
                                 turn = 'Player 1'
         if not again_play():
+                print('Thanks for playing!')
                 break
                         
         
